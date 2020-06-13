@@ -1,0 +1,23 @@
+{
+    "name": "chaosannals/sqlue",
+    "type": "library",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chaosannals",
+            "email": "chaosannals@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "sqlue\\": "main"
+        }
+    },
+    "require": {
+        "doctrine/annotations": "^1.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    }
+}
