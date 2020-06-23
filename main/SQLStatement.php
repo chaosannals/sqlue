@@ -2,6 +2,12 @@
 
 namespace sqlue;
 
+use sqlue\operation\SQLSelect;
+
+/**
+ * SQL 语句
+ * 
+ */
 class SQLStatement
 {
     const OPERATION_SELECT = 1;
@@ -29,14 +35,14 @@ class SQLStatement
         return $this;
     }
 
-    public function select($field, $alias = null)
+    public function select($fields)
     {
         if (is_null($this->operation)) {
-            $this->operation = self::OPERATION_SELECT;
-        } else if ($this->operation !== self::OPERATION_SELECT) {
+            $this->operation = new SQLSelect();
+        } else if (!($this->operation instanceof SQLSelect)) {
             throw new SQLException();
         }
-        $this->fields[$field] = $alias;
+        $this->operation->fields = $fields;
         return $this;
     }
 
@@ -62,5 +68,6 @@ class SQLStatement
 
     public function __toString()
     {
+        return (string) $this->operation;
     }
 }
